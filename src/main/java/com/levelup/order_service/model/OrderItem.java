@@ -14,9 +14,8 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
-
-    // String porque en tu Android el ID del producto es String
     private String productId;
 
     private Integer quantity;

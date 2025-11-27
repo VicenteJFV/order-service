@@ -18,8 +18,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    // --- Datos del Cliente ---
     private String customerName;
-    private String customerEmail;
+    private String customerPhone;     // Nuevo
+    private String deliveryAddress;   // Nuevo
+    private String paymentMethod;     // Nuevo
+
+    // --- Datos del Sistema ---
     private String status;
     private LocalDateTime createdAt;
     private BigDecimal totalAmount;
@@ -27,7 +32,9 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> items = new ArrayList<>();
 
-    // Método para vincular los items con la orden
+    // --- Métodos IMPORTANTES (No los borres) ---
+
+    // 1. Vincula los hijos con el padre
     public void addItems(List<OrderItem> newItems) {
         for (OrderItem item : newItems) {
             item.setOrder(this);
@@ -35,9 +42,12 @@ public class Order {
         }
     }
 
+    // 2. LA MAGIA: Rellena fecha y estado automáticamente antes de guardar
     @PrePersist
     protected void onCreate() {
-        this.createdAt = LocalDateTime.now();
-        if (this.status == null) this.status = "CREATED";
+        this.createdAt = LocalDateTime.now(); // Pone la fecha/hora actual
+        if (this.status == null) {
+            this.status = "CREATED";      // Pone el estado por defecto
+        }
     }
 }

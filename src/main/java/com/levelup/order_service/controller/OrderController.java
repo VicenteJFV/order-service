@@ -54,7 +54,6 @@ public class OrderController {
         return orderRepository.findById(id)
                 .map(existingOrder -> {
                     existingOrder.setCustomerName(orderDetails.getCustomerName());
-                    existingOrder.setCustomerEmail(orderDetails.getCustomerEmail());
                     existingOrder.setTotalAmount(orderDetails.getTotalAmount());
                     existingOrder.setStatus(orderDetails.getStatus());
 
