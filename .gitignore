@@ -1,48 +1,33 @@
-# ---- Sistema operativo ----
-.DS_Store
-Thumbs.db
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# ---- Archivos de IntelliJ / IDE ----
-.idea/
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
 *.iml
 *.ipr
-*.iws
 
-# VS Code
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
 .vscode/
-
-# ---- Maven ----
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-
-# ---- Logs ----
-logs/
-*.log
-
-# ---- Java ----
-*.class
-*.jar
-*.war
-*.ear
-
-# ---- BD y cachés ----
-*.db
-*.mv.db
-*.sqlite
-
-# ---- Spring Boot ----
-# Archivo generado si usas spring-boot:run
-spring.log
-
-# ---- Configuraciones sensibles ----
-# evita subir claves o passwords
-application.properties
-application.yml
-
-# Si quieres permitir subir la config sin las credenciales
-# puedes subir un archivo ejemplo:
-# application-example.properties
