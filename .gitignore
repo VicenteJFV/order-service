@@ -1,0 +1,48 @@
+# ---- Sistema operativo ----
+.DS_Store
+Thumbs.db
+
+# ---- Archivos de IntelliJ / IDE ----
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# ---- Maven ----
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ---- Logs ----
+logs/
+*.log
+
+# ---- Java ----
+*.class
+*.jar
+*.war
+*.ear
+
+# ---- BD y cachés ----
+*.db
+*.mv.db
+*.sqlite
+
+# ---- Spring Boot ----
+# Archivo generado si usas spring-boot:run
+spring.log
+
+# ---- Configuraciones sensibles ----
+# evita subir claves o passwords
+application.properties
+application.yml
+
+# Si quieres permitir subir la config sin las credenciales
+# puedes subir un archivo ejemplo:
+# application-example.properties
