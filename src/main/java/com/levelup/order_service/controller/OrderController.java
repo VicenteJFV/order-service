@@ -53,9 +53,24 @@ public class OrderController {
     public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order orderDetails) {
         return orderRepository.findById(id)
                 .map(existingOrder -> {
+                    // Solo actualizamos los campos de envío/pago (lo que el usuario podría corregir)
                     existingOrder.setCustomerName(orderDetails.getCustomerName());
-                    existingOrder.setTotalAmount(orderDetails.getTotalAmount());
-                    existingOrder.setStatus(orderDetails.getStatus());
+                    existingOrder.setCustomerPhone(orderDetails.getCustomerPhone());
+                    existingOrder.setDeliveryAddress(orderDetails.getDeliveryAddress());
+                    existingOrder.setPaymentMethod(orderDetails.getPaymentMethod());
+
+                    // NOTA IMPORTANTE:
+                    // NO actualizamos TotalAmount ni Items para preservar el monto original de la compra.
+
+                    // Agregamos un marcador visual si viene en el body
+                    if (orderDetails.getCustomerName().contains("(Editado)")) {
+                        // Solo si el cliente envió la marca de actualización, la guardamos
+                        existingOrder.setCustomerName(orderDetails.getCustomerName());
+                    } else {
+                        // Si el cliente no envió la marca, al menos actualizamos el nombre
+                        existingOrder.setCustomerName(orderDetails.getCustomerName());
+                    }
+
 
                     Order updatedOrder = orderRepository.save(existingOrder);
                     return ResponseEntity.ok(updatedOrder);
